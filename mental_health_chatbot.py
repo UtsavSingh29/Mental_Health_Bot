@@ -18,14 +18,12 @@ while True:
         print("Bot: Take care! If needed, seek professional help. 😊")
         break
 
-    # Store user input in conversation history
     conversation_history.append(f"User: {user_input}")
 
-    # Construct the prompt to keep it **open-ended but still prioritize mental health**  
     formatted_prompt = (
         "You are a mental health chatbot that primarily focuses on mental well-being. However, "
         "you are also allowed to answer general queries when appropriate related to emotions feeling and mental and kind like that. Keep responses supportive and friendly.\n"
-        + "\n".join(conversation_history[-5:])  # Keep only the last 5 messages
+        + "\n".join(conversation_history[-5:])  
         + "\nAI (Mental Health Expert):"
     )
 
@@ -34,7 +32,7 @@ while True:
     sys.stderr = sys.__stderr__
 
     bot_response = response["choices"][0]["text"].strip()
-    bot_response = bot_response.split("User:")[0].strip()  # Avoid repeating user messages
+    bot_response = bot_response.split("User:")[0].strip()  
 
     conversation_history.append(f"AI (Mental Health Expert): {bot_response}")
 
